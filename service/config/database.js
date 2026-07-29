@@ -79,6 +79,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 async function testConnection() {
   try {
     await sequelize.authenticate()
+    await sequelize.sync()
     dbLogger.info(`数据库连接成功 ${config.host}:${config.port}/${config.database}`)
   } catch (err) {
     dbLogger.error('数据库连接失败', err)
